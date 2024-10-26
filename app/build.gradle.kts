@@ -42,7 +42,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.dotlottie.android)
+    implementation("com.github.LottieFiles:dotlottie-android:0.4.1")
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.picasso)

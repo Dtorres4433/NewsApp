@@ -45,7 +45,7 @@ dependencies {
     implementation (libs.lottie)
     implementation(libs.retrofit)
     implementation(libs.gson)
-    implementation(libs.picasso)
+    implementation(libs.coil.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

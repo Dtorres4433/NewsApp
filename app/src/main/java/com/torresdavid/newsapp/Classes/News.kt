@@ -1,4 +1,4 @@
-package com.torresdavid.newsapp
+package com.torresdavid.newsapp.Classes
 
 data class News(var author: String,
                 var title: String,

@@ -1,4 +1,4 @@
-package com.torresdavid.newsapp
+package com.torresdavid.newsapp.Activities
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
+import com.torresdavid.newsapp.R
 
 class NewsActivity : AppCompatActivity() {
     private lateinit var homeLoader: ProgressBar

@@ -6,7 +6,6 @@ class RetrofitAdapter {
     private fun getRetrofit():Retrofit{
         return Retrofit.Builder()
             .baseUrl("http://api.mediastack.com/v1/news")
-            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 }

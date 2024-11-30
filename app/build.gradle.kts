@@ -5,12 +5,11 @@ plugins {
 
 android {
     namespace = "com.torresdavid.newsapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.torresdavid.newsapp"
         minSdk = 24
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -45,7 +44,7 @@ dependencies {
     implementation (libs.lottie)
     implementation(libs.retrofit)
     implementation(libs.gson)
-    implementation(libs.coil.compose)
+    implementation(libs.picasso)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

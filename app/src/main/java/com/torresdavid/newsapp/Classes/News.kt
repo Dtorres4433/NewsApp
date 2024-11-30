@@ -9,4 +9,4 @@ data class News(var author: String,
                 var category: String,
                 var language: String,
                 var country: String,
-                var publishedAt: String)
+                var published_at: String)

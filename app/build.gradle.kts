@@ -12,10 +12,16 @@ android {
         minSdk = 24
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"${project.findProperty("API_KEY")}\""
+        )
     }
-
+    buildFeatures {
+        buildConfig = true
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -35,7 +41,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -44,7 +51,6 @@ dependencies {
     implementation (libs.lottie)
     implementation(libs.retrofit)
     implementation(libs.gson)
-    implementation(libs.picasso)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

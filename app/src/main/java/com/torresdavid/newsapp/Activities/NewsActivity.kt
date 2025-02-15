@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import com.torresdavid.newsapp.Adapter.NewsAdapter
@@ -25,12 +26,14 @@ class NewsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var chipGroup: ChipGroup
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.enableEdgeToEdge()
         setContentView(R.layout.activity_news)
         homeLoader = findViewById(R.id.homeLoader)
         recyclerView = findViewById(R.id.recyclerView)
+        chipGroup = findViewById(R.id.chipGroup)
         ViewCompat.setOnApplyWindowInsetsListener(
             findViewById(R.id.main)
         ) { v: View, insets: WindowInsetsCompat ->
@@ -39,13 +42,65 @@ class NewsActivity : AppCompatActivity() {
             insets
         }
         showLoader()
-        getNews()
+        getNews("general")
+        chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            val chip: Chip? = group.findViewById(checkedId)
+            chip?.let {
+                val category = chip.text.toString()
+                fetchNewsByCategory(category)
+            }
+        }
     }
 
-    private fun getNews() {
+    private fun fetchNewsByCategory(category: String) {
+        showLoader()
+// For example, you can call different API endpoints based on the category
+        when (category) {
+            getString(R.string.general) -> getNews("general")
+            getString(R.string.business) -> getNews("business")
+            getString(R.string.health) -> getNews("health")
+            getString(R.string.science) -> getNews("science")
+            getString(R.string.sports) -> getNews("sports")
+            getString(R.string.technology) -> getNews("technology")
+        }
+    }
+
+    /**
+     * Fetches news data from the MediaStack API.
+     *
+     * This function performs an asynchronous network request to retrieve news articles.
+     * It utilizes Retrofit for handling the HTTP communication and enqueue() for asynchronous execution.
+     *
+     * On success (HTTP 200 OK):
+     *   - It extracts the news data from the MediaStack response body.
+     *   - It calls the `loadNews()` function to process and display the retrieved news.
+     *   - It calls `hideLoader()` to dismiss any loading indicators.
+     *
+     * On failure (network error or HTTP error other than 200):
+     *   - It calls `hideLoader()` to dismiss any loading indicators.
+     *   - It displays an error message using a Snackbar, informing the user about the failure.
+     *
+     * The response is expected to be of type `MediaStack`, which should contain the news articles in its `data` field.
+     *
+     * @see RetrofitAdapter
+     * @see ApiService
+     * @see MediaStack
+     * @see loadNews
+     * @see hideLoader
+     */
+    private fun getNews(category: String) {
         val retrofitAdapter = RetrofitAdapter()
         val apiService = retrofitAdapter.getRetrofit().create(ApiService::class.java)
-        val call = apiService.getNews()
+        val call = when (category){
+            "general" -> apiService.getNews()
+            "business" -> apiService.getNewsBusiness()
+            "entertainment" -> apiService.getNewsEntertainment()
+            "health" -> apiService.getNewsHealth()
+            "science" -> apiService.getNewsScience()
+            "sports" -> apiService.getNewsSports()
+            "technology" -> apiService.getNewsTechnology()
+            else -> apiService.getNews()
+        }
         call.enqueue(object : Callback<MediaStack> {
             override fun onResponse(call: Call<MediaStack>, response: Response<MediaStack>) {
                 if (response.code() == 200) {

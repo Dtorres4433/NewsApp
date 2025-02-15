@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import coil3.load
+import coil3.request.crossfade
 import com.torresdavid.newsapp.Classes.News
 import com.torresdavid.newsapp.R
 import java.time.ZoneId
@@ -34,22 +36,29 @@ class NewsAdapter(private val dataNews: Array<News>): RecyclerView.Adapter<NewsA
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.tvTitle.text = dataNews[position].title
+        holder.tvTitle.text = convertHtmlEntities(dataNews[position].title)
         holder.tvDate.text = formatedDate(dataNews[position].published_at)
         if (dataNews[position].author == null){
             holder.tvAuthor.text = "Author: N/A"
         } else {
-            holder.tvAuthor.text = "Author: ${dataNews[position].author}"
+            holder.tvAuthor.text = "Author: ${convertHtmlEntities(dataNews[position].author)}"
         }
-        holder.tvDescription.text = dataNews[position].description
-        holder.tvSource.text = dataNews[position].source
+        holder.tvDescription.text = convertHtmlEntities(dataNews[position].description)
+        holder.tvSource.text = convertHtmlEntities(dataNews[position].source)
         if (dataNews[position].image == null){
-            Picasso.get().load(dataNews[position].image).into(holder.tvImage)
             holder.tvImage.visibility = View.GONE
         } else {
-            Picasso.get().load(dataNews[position].image).resize(200,200).centerCrop().into(holder.tvImage)
+            holder.tvImage.load(dataNews[position].image){
+                crossfade(true)
+                crossfade(1000)
+            }
         }
     }
+
+    private fun convertHtmlEntities(description: String): String {
+        return HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun formatedDate(publishedAt: String): String? {

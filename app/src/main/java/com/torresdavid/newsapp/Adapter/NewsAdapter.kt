@@ -37,14 +37,14 @@ class NewsAdapter(private val dataNews: Array<News>): RecyclerView.Adapter<NewsA
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvTitle.text = convertHtmlEntities(dataNews[position].title)
-        holder.tvDate.text = formatedDate(dataNews[position].published_at)
+        holder.tvDate.text = "Date: ${formatedDate(dataNews[position].published_at)}"
         if (dataNews[position].author == null){
             holder.tvAuthor.text = "Author: N/A"
         } else {
             holder.tvAuthor.text = "Author: ${convertHtmlEntities(dataNews[position].author)}"
         }
         holder.tvDescription.text = convertHtmlEntities(dataNews[position].description)
-        holder.tvSource.text = convertHtmlEntities(dataNews[position].source)
+        holder.tvSource.text = "Source: ${convertHtmlEntities(dataNews[position].source)}"
         if (dataNews[position].image == null){
             holder.tvImage.visibility = View.GONE
         } else {

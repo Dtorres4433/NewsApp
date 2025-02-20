@@ -1,5 +1,7 @@
 package com.torresdavid.newsapp.Activities
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
@@ -13,8 +15,9 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import com.torresdavid.newsapp.Adapter.NewsAdapter
 import com.torresdavid.newsapp.Adapter.RetrofitAdapter
+import com.torresdavid.newsapp.Classes.Articles
 import com.torresdavid.newsapp.Classes.MediaStack
-import com.torresdavid.newsapp.Classes.News
+import com.torresdavid.newsapp.Classes.NewsAPI
 import com.torresdavid.newsapp.Interface.ApiService
 import com.torresdavid.newsapp.R
 import retrofit2.Call
@@ -101,18 +104,18 @@ class NewsActivity : AppCompatActivity() {
             "technology" -> apiService.getNewsTechnology()
             else -> apiService.getNews()
         }
-        call.enqueue(object : Callback<MediaStack> {
-            override fun onResponse(call: Call<MediaStack>, response: Response<MediaStack>) {
+        call.enqueue(object : Callback<NewsAPI> {
+            override fun onResponse(call: Call<NewsAPI>, response: Response<NewsAPI>) {
                 if (response.code() == 200) {
                     val mediaStack = response.body()
-                    loadNews(mediaStack?.data)
+                    loadNews(mediaStack?.articles)
                     hideLoader()
                 }else{
                     onFailure(call, Throwable(response.message()))
                 }
             }
 
-            override fun onFailure(call: Call<MediaStack>, t: Throwable) {
+            override fun onFailure(call: Call<NewsAPI>, t: Throwable) {
                 hideLoader()
                 Snackbar.make(
                     findViewById(R.id.main),
@@ -123,10 +126,15 @@ class NewsActivity : AppCompatActivity() {
         })
     }
 
-    private fun loadNews(data: Array<News>?) {
+    private fun loadNews(data: Array<Articles>?) {
         newsAdapter = NewsAdapter(data!!)
         recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.adapter = newsAdapter
+        newsAdapter.onItemClick = {
+            val intent = Intent(this, ContentActivity::class.java)
+            intent.putExtra("article", it)
+            startActivity(intent)
+        }
     }
 
     private fun showLoader() {

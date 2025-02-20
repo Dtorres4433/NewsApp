@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
@@ -63,52 +64,57 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipGeneral"
-                    style="@style/Widget.Material3.Chip.Suggestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/general"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"                    app:chipStrokeColor="@color/white" />
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    app:chipIcon="@drawable/newspaper"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipBusiness"
-                    style="@style/Widget.Material3.Chip.Suggestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/business"
+                    android:checkable="true"
                     app:chipBackgroundColor="@color/material_dynamic_primary95"
-                    />
+                    app:chipIcon="@drawable/business" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipHealth"
-                    style="@style/Widget.Material3.Chip.Suggestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/health"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"/>
+                    android:checkable="true"
+                    app:chipIcon="@drawable/health"
+                    app:chipBackgroundColor="@color/material_dynamic_primary95" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipScience"
-                    style="@style/Widget.Material3.Chip.Suggestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/science"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"/>
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    app:chipIcon="@drawable/science" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipSports"
-                    style="@style/Widget.Material3.Chip.Suggestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sports"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"/>
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    app:chipIcon="@drawable/sports" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipTechnology"
-                    style="@style/Widget.Material3.Chip.Suggestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/technology"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"/>
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    app:chipIcon="@drawable/laptop" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
     </ScrollView>
@@ -117,6 +123,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

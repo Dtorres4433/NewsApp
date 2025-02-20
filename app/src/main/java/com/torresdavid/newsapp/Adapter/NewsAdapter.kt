@@ -12,13 +12,15 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import coil3.request.crossfade
-import com.torresdavid.newsapp.Classes.News
+import com.torresdavid.newsapp.Classes.Articles
 import com.torresdavid.newsapp.R
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-class NewsAdapter(private val dataNews: Array<News>): RecyclerView.Adapter<NewsAdapter.MyViewHolder>() {
+class NewsAdapter(private val dataNews: Array<Articles>): RecyclerView.Adapter<NewsAdapter.MyViewHolder>() {
+    var onItemClick: ((Articles) -> Unit)? = null
+
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val tvTitle: TextView = view.findViewById(R.id.title)
         val tvDate: TextView = view.findViewById(R.id.published_at)
@@ -37,22 +39,33 @@ class NewsAdapter(private val dataNews: Array<News>): RecyclerView.Adapter<NewsA
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvTitle.text = convertHtmlEntities(dataNews[position].title)
-        holder.tvDate.text = "Date: ${formatedDate(dataNews[position].published_at)}"
+        holder.tvDate.text = "Date: ${formatedDate(dataNews[position].publishedAt)}"
         if (dataNews[position].author == null){
             holder.tvAuthor.text = "Author: N/A"
         } else {
             holder.tvAuthor.text = "Author: ${convertHtmlEntities(dataNews[position].author)}"
         }
-        holder.tvDescription.text = convertHtmlEntities(dataNews[position].description)
-        holder.tvSource.text = "Source: ${convertHtmlEntities(dataNews[position].source)}"
-        if (dataNews[position].image == null){
-            holder.tvImage.visibility = View.GONE
+        if(dataNews[position].description != null){
+            holder.tvDescription.text = convertHtmlEntities(dataNews[position].description)
+        }else{
+            holder.tvDescription.text = "N/A"
+        }
+        holder.tvSource.text = "Source: ${convertHtmlEntities(dataNews[position].source.name)}"
+        if (dataNews[position].urlToImage == null){
+            holder.tvImage.setBackgroundResource(R.drawable.img)
         } else {
-            holder.tvImage.load(dataNews[position].image){
+            holder.tvImage.load(dataNews[position].urlToImage){
                 crossfade(true)
                 crossfade(1000)
             }
         }
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(dataNews[position])
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return dataNews.size
     }
 
     private fun convertHtmlEntities(description: String): String {
@@ -64,11 +77,7 @@ class NewsAdapter(private val dataNews: Array<News>): RecyclerView.Adapter<NewsA
     private fun formatedDate(publishedAt: String): String? {
         val zonedDateTime = ZonedDateTime.parse(publishedAt)
         val localDateTime = zonedDateTime.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime()
-        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        val formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy")
         return localDateTime.format(formatter)
-    }
-
-    override fun getItemCount(): Int {
-        return dataNews.size
     }
 }

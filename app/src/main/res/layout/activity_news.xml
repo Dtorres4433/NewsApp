@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
@@ -66,17 +66,17 @@
                     android:id="@+id/chipGeneral"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/general"
                     android:checkable="true"
+                    android:text="@string/general"
                     app:chipBackgroundColor="@color/material_dynamic_primary95"
-                    app:chipIcon="@drawable/newspaper"/>
+                    app:chipIcon="@drawable/newspaper" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipBusiness"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/business"
                     android:checkable="true"
+                    android:text="@string/business"
                     app:chipBackgroundColor="@color/material_dynamic_primary95"
                     app:chipIcon="@drawable/business" />
 
@@ -84,17 +84,17 @@
                     android:id="@+id/chipHealth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/health"
                     android:checkable="true"
-                    app:chipIcon="@drawable/health"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95" />
+                    android:text="@string/health"
+                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    app:chipIcon="@drawable/health" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipScience"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/science"
                     android:checkable="true"
+                    android:text="@string/science"
                     app:chipBackgroundColor="@color/material_dynamic_primary95"
                     app:chipIcon="@drawable/science" />
 
@@ -102,8 +102,8 @@
                     android:id="@+id/chipSports"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/sports"
                     android:checkable="true"
+                    android:text="@string/sports"
                     app:chipBackgroundColor="@color/material_dynamic_primary95"
                     app:chipIcon="@drawable/sports" />
 
@@ -111,8 +111,8 @@
                     android:id="@+id/chipTechnology"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/technology"
                     android:checkable="true"
+                    android:text="@string/technology"
                     app:chipBackgroundColor="@color/material_dynamic_primary95"
                     app:chipIcon="@drawable/laptop" />
             </com.google.android.material.chip.ChipGroup>
@@ -130,13 +130,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
-    <ProgressBar
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/homeLoader"
         android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/news" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

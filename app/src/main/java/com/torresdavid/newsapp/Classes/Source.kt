@@ -4,11 +4,11 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Source (
-    var id: String,
+    var id: String? = "",
     var name: String
 ):Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
+        parcel.readString(),
         parcel.readString()!!
     )
 

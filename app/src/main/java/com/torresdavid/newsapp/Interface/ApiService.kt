@@ -1,7 +1,6 @@
 package com.torresdavid.newsapp.Interface
 
 import com.torresdavid.newsapp.BuildConfig.API_KEY
-import com.torresdavid.newsapp.Classes.MediaStack
 import com.torresdavid.newsapp.Classes.NewsAPI
 import retrofit2.Call
 import retrofit2.http.GET

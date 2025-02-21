@@ -21,6 +21,7 @@ android {
     }
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
     buildTypes {
         release {
@@ -51,6 +52,10 @@ dependencies {
     implementation (libs.lottie)
     implementation(libs.retrofit)
     implementation(libs.gson)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

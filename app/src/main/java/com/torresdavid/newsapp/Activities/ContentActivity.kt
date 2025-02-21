@@ -41,9 +41,18 @@ class ContentActivity : AppCompatActivity() {
             val source: TextView = findViewById(R.id.textView6)
 
             title.text = article.title
-            author.text = article.author
+            if (article.author == null){
+                author.text = "Unknown Author"
+            } else {
+                author.text = article.author
+            }
             date.text = formatedDate(article.publishedAt)
-            description.text = article.description
+            if (article.content == null){
+                description.text = "N/A"
+                description.visibility = TextView.GONE
+            } else {
+                description.text = article.content
+            }
             image.load(article.urlToImage){
                 crossfade(true)
                 crossfade(1000)

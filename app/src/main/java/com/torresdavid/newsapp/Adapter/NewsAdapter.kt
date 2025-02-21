@@ -43,10 +43,10 @@ class NewsAdapter(private val dataNews: Array<Articles>): RecyclerView.Adapter<N
         if (dataNews[position].author == null){
             holder.tvAuthor.text = "Author: N/A"
         } else {
-            holder.tvAuthor.text = "Author: ${convertHtmlEntities(dataNews[position].author)}"
+            holder.tvAuthor.text = "Author: ${convertHtmlEntities(dataNews[position].author!!)}"
         }
         if(dataNews[position].description != null){
-            holder.tvDescription.text = convertHtmlEntities(dataNews[position].description)
+            holder.tvDescription.text = convertHtmlEntities(dataNews[position].description!!)
         }else{
             holder.tvDescription.text = "N/A"
         }

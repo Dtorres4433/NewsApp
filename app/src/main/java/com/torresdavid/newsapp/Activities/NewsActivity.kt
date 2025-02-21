@@ -10,13 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import com.torresdavid.newsapp.Adapter.NewsAdapter
 import com.torresdavid.newsapp.Adapter.RetrofitAdapter
 import com.torresdavid.newsapp.Classes.Articles
-import com.torresdavid.newsapp.Classes.MediaStack
 import com.torresdavid.newsapp.Classes.NewsAPI
 import com.torresdavid.newsapp.Interface.ApiService
 import com.torresdavid.newsapp.R
@@ -25,7 +25,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NewsActivity : AppCompatActivity() {
-    private lateinit var homeLoader: ProgressBar
+    private lateinit var homeLoader: LottieAnimationView
     private lateinit var recyclerView: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var chipGroup: ChipGroup
@@ -87,7 +87,7 @@ class NewsActivity : AppCompatActivity() {
      *
      * @see RetrofitAdapter
      * @see ApiService
-     * @see MediaStack
+     * @see NewsAPI
      * @see loadNews
      * @see hideLoader
      */
@@ -138,9 +138,11 @@ class NewsActivity : AppCompatActivity() {
     }
 
     private fun showLoader() {
+        recyclerView.visibility = View.GONE
         homeLoader.visibility = View.VISIBLE
     }
     fun hideLoader() {
         homeLoader.visibility = View.GONE
+        recyclerView.visibility = View.VISIBLE
     }
 }

@@ -12,8 +12,7 @@ data class NewsAPI(
         parcel.readString()!!,
         parcel.readInt(),
         parcel.createTypedArray(Articles) as Array<Articles>
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(status)

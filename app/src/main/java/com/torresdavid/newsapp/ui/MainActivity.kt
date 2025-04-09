@@ -1,4 +1,4 @@
-package com.torresdavid.newsapp.Activities
+package com.torresdavid.newsapp.ui
 
 import android.content.Intent
 import android.os.Bundle

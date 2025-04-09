@@ -15,12 +15,6 @@
         android:theme="@style/Theme.NewsApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.BookMarkActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.SearchActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.ContentActivity"
             android:exported="false" />
         <activity

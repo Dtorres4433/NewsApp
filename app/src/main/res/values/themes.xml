@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.NewsApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -9,24 +9,14 @@
         <item name="colorSecondaryVariant">@color/primary</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorSurface">@color/white</item>
+        <item name="colorSurfaceVariant">@color/primary</item>
         <item name="colorOnSurface">@color/black</item>
         <item name="cardBackgroundColor">@color/white</item>
     </style>
 
+    <style name="NewsAppChips" parent="Widget.Material3.Chip.Assist">
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+    </style>
     <style name="Theme.NewsApp" parent="Base.Theme.NewsApp" />
 
-    <style name="Theme.NewsApp.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.NewsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.NewsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="CustomToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="fontFamily">@font/hankengrotesk_medium</item>
-        <item name="android:textColor">@color/primary</item>
-
-    </style>
 </resources>

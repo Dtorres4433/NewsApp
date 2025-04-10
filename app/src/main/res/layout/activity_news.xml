@@ -58,63 +58,63 @@
                 android:id="@+id/chipGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 app:checkedChip="@id/chipGeneral"
                 app:singleLine="true"
-                app:singleSelection="true">
+                app:singleSelection="true"
+                app:selectionRequired="true">
 
                 <com.google.android.material.chip.Chip
+                    style="@style/NewsAppChips"
                     android:id="@+id/chipGeneral"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:text="@string/general"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    android:checkable="true"
                     app:chipIcon="@drawable/newspaper" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/NewsAppChips"
                     android:id="@+id/chipBusiness"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:text="@string/business"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    android:checkable="true"
                     app:chipIcon="@drawable/business" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/NewsAppChips"
                     android:id="@+id/chipHealth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:text="@string/health"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    android:checkable="true"
                     app:chipIcon="@drawable/health" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/NewsAppChips"
                     android:id="@+id/chipScience"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:text="@string/science"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    android:checkable="true"
                     app:chipIcon="@drawable/science" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/NewsAppChips"
                     android:id="@+id/chipSports"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:text="@string/sports"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    android:checkable="true"
                     app:chipIcon="@drawable/sports" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/NewsAppChips"
                     android:id="@+id/chipTechnology"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="true"
                     android:text="@string/technology"
-                    app:chipBackgroundColor="@color/material_dynamic_primary95"
+                    android:checkable="true"
                     app:chipIcon="@drawable/laptop" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>

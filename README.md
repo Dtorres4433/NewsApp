@@ -36,4 +36,4 @@ NewsApp is a personal Android project built using Kotlin and Java. It showcases 
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Dtorres4433/NewsApp.git

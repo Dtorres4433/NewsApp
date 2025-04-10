@@ -1,6 +1,6 @@
 # NewsApp
 
-NewsApp is a personal Android project built using Kotlin and Java. It showcases a categorized news application, allowing users to filter news by topics such as General, Business, Health, Science, Sports, and Technology. The app is designed with Material Design 3 principles for a clean and user-friendly interface.
+NewsApp is a personal Android project built using Kotlin. It showcases a categorized news application, allowing users to filter news by topics such as General, Business, Health, Science, Sports, and Technology. The app is designed with Material Design 3 principles for a clean and user-friendly interface.
 ## Features
 
 - **Categorized News**: Filter news by categories using interactive chips.
@@ -14,7 +14,7 @@ NewsApp is a personal Android project built using Kotlin and Java. It showcases 
 
 ## Tech Stack
 
-- **Languages**: Kotlin, Java
+- **Languages**: Kotlin
 - **Frameworks**: Android SDK, Material Design 3
 - **Build Tool**: Gradle
 - **UI Components**: ConstraintLayout, RecyclerView, ChipGroup, LottieAnimationView

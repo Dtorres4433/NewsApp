@@ -7,6 +7,9 @@ NewsApp is a personal Android project built using Kotlin. It showcases a categor
 - **Material Design 3**: Modern UI components for a seamless user experience.
 - **RecyclerView**: Displays news articles in a scrollable list.
 - **Lottie Animations**: Adds engaging animations to enhance the app's visual appeal.
+- **Retrofit2**: Handles API requests to fetch news data.
+- **Coil**: Efficiently loads and displays images in the app.
+
 
 ## Screenshots
 
@@ -16,6 +19,8 @@ NewsApp is a personal Android project built using Kotlin. It showcases a categor
 
 - **Languages**: Kotlin
 - **Frameworks**: Android SDK, Material Design 3
+- **Networking**: Retrofit2
+- **Image Loading**: Coil
 - **Build Tool**: Gradle
 - **UI Components**: ConstraintLayout, RecyclerView, ChipGroup, LottieAnimationView
 

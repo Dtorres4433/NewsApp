@@ -13,7 +13,9 @@ NewsApp is a personal Android project built using Kotlin. It showcases a categor
 
 ## Screenshots
 
-*(Add screenshots of your app here)*
+![alt text](https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_135124.png?raw=true)
+![alt text](https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_135209.png?raw=true)
+![alt text](https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_143727.png?raw=true)
 
 ## Tech Stack
 

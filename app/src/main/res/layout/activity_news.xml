@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,62 +60,62 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:checkedChip="@id/chipGeneral"
+                app:selectionRequired="true"
                 app:singleLine="true"
-                app:singleSelection="true"
-                app:selectionRequired="true">
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
-                    style="@style/NewsAppChips"
                     android:id="@+id/chipGeneral"
+                    style="@style/NewsAppChips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/general"
                     android:checkable="true"
+                    android:text="@string/general"
                     app:chipIcon="@drawable/newspaper" />
 
                 <com.google.android.material.chip.Chip
-                    style="@style/NewsAppChips"
                     android:id="@+id/chipBusiness"
+                    style="@style/NewsAppChips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/business"
                     android:checkable="true"
+                    android:text="@string/business"
                     app:chipIcon="@drawable/business" />
 
                 <com.google.android.material.chip.Chip
-                    style="@style/NewsAppChips"
                     android:id="@+id/chipHealth"
+                    style="@style/NewsAppChips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/health"
                     android:checkable="true"
+                    android:text="@string/health"
                     app:chipIcon="@drawable/health" />
 
                 <com.google.android.material.chip.Chip
-                    style="@style/NewsAppChips"
                     android:id="@+id/chipScience"
+                    style="@style/NewsAppChips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/science"
                     android:checkable="true"
+                    android:text="@string/science"
                     app:chipIcon="@drawable/science" />
 
                 <com.google.android.material.chip.Chip
-                    style="@style/NewsAppChips"
                     android:id="@+id/chipSports"
+                    style="@style/NewsAppChips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/sports"
                     android:checkable="true"
+                    android:text="@string/sports"
                     app:chipIcon="@drawable/sports" />
 
                 <com.google.android.material.chip.Chip
-                    style="@style/NewsAppChips"
                     android:id="@+id/chipTechnology"
+                    style="@style/NewsAppChips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/technology"
                     android:checkable="true"
+                    android:text="@string/technology"
                     app:chipIcon="@drawable/laptop" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
@@ -124,6 +125,7 @@
         android:id="@+id/refreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

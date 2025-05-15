@@ -3,11 +3,13 @@ package com.torresdavid.newsapp.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -27,14 +29,19 @@ class NewsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var chipGroup: ChipGroup
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.enableEdgeToEdge()
         setContentView(R.layout.activity_news)
+        /* Initialize views*/
         homeLoader = findViewById(R.id.homeLoader)
         recyclerView = findViewById(R.id.recyclerView)
         chipGroup = findViewById(R.id.chipGroup)
+        swipeRefreshLayout = findViewById(R.id.refreshLayout)
+        /*Variables*/
+        var category = "General"
         ViewCompat.setOnApplyWindowInsetsListener(
             findViewById(R.id.main)
         ) { v: View, insets: WindowInsetsCompat ->
@@ -43,19 +50,24 @@ class NewsActivity : AppCompatActivity() {
             insets
         }
         showLoader()
-        getNews("general")
+        fetchNewsByCategory(category)
+        /* Set up the ChipGroup for each category*/
         chipGroup.setOnCheckedChangeListener { group, checkedId ->
             val chip: Chip? = group.findViewById(checkedId)
             chip?.let {
-                val category = chip.text.toString()
+                category = chip.text.toString()
                 fetchNewsByCategory(category)
             }
+        }
+        /* Set up the SwipeRefreshLayout for pull-to-refresh functionality*/
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = false
+            fetchNewsByCategory(category)
         }
     }
 
     private fun fetchNewsByCategory(category: String) {
         showLoader()
-// For example, you can call different API endpoints based on the category
         when (category) {
             getString(R.string.general) -> getNews("general")
             getString(R.string.business) -> getNews("business")

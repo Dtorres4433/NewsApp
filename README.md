@@ -13,9 +13,16 @@ NewsApp is a personal Android project built using Kotlin. It showcases a categor
 
 ## Screenshots
 
-![alt text](https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_135124.png?raw=true)
-![alt text](https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_135209.png?raw=true)
-![alt text](https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_143727.png?raw=true)
+
+<p align="center">
+  <img src="https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_135124.png" width="25%" />
+  <img src="https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_135209.png" width="25%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/Dtorres4433/NewsApp/blob/7d9ff96e153475ffe17447d80c4b81b387a34c9a/Screenshots/Screenshot_20250515_143727.png" width="25%" />
+  <img src="https://github.com/Dtorres4433/NewsApp/blob/584752117c237dcf4c5267966e05dd30b0b2d71b/Screenshots/Screenshot_163.png" width="25%" />
+</p>
 
 ## Tech Stack
 

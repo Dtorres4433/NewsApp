@@ -10,6 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.torresdavid.newsapp"
         minSdk = 24
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -42,6 +43,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.junit.ktx)
+    androidTestImplementation(libs.androidx.junit.ktx)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
     implementation(libs.androidx.core.ktx)
@@ -58,6 +61,8 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefreshlayout)
     testImplementation(libs.junit)
+    androidTestImplementation(libs.mockwebserver)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.idling.resource)
     androidTestImplementation(libs.androidx.espresso.core)
 }

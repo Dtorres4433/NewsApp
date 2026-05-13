@@ -14,9 +14,7 @@ import coil3.load
 import coil3.request.crossfade
 import com.torresdavid.newsapp.Classes.Articles
 import com.torresdavid.newsapp.R
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import com.torresdavid.newsapp.Utils.DateUtils
 
 class NewsAdapter(private val dataNews: Array<Articles>): RecyclerView.Adapter<NewsAdapter.MyViewHolder>() {
     var onItemClick: ((Articles) -> Unit)? = null
@@ -39,7 +37,7 @@ class NewsAdapter(private val dataNews: Array<Articles>): RecyclerView.Adapter<N
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvTitle.text = convertHtmlEntities(dataNews[position].title)
-        holder.tvDate.text = "Date: ${formatedDate(dataNews[position].publishedAt)}"
+        holder.tvDate.text = "Date: ${DateUtils.formatDate(dataNews[position].publishedAt)}"
         if (dataNews[position].author == null){
             holder.tvAuthor.text = "Author: N/A"
         } else {
@@ -72,12 +70,4 @@ class NewsAdapter(private val dataNews: Array<Articles>): RecyclerView.Adapter<N
         return HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
     }
 
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun formatedDate(publishedAt: String): String? {
-        val zonedDateTime = ZonedDateTime.parse(publishedAt)
-        val localDateTime = zonedDateTime.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime()
-        val formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy")
-        return localDateTime.format(formatter)
-    }
 }

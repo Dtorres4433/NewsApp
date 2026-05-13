@@ -1,8 +1,6 @@
 package com.torresdavid.newsapp.ui
 
 import android.content.Intent
-import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
@@ -10,15 +8,14 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import coil3.load
 import coil3.request.crossfade
 import com.torresdavid.newsapp.Classes.Articles
 import com.torresdavid.newsapp.R
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import com.torresdavid.newsapp.Utils.DateUtils
 
 class ContentActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -47,7 +44,7 @@ class ContentActivity : AppCompatActivity() {
             } else {
                 author.text = article.author
             }
-            date.text = formatedDate(article.publishedAt)
+            date.text = DateUtils.formatDate(article.publishedAt)
             if (article.content == null){
                 description.text = "N/A"
                 description.visibility = TextView.GONE
@@ -59,19 +56,11 @@ class ContentActivity : AppCompatActivity() {
                 crossfade(1000)
             }
             source.text = article.source.name
-            source.setTextColor(Color.BLUE)
+            source.setTextColor(getColor(R.color.primary))
             source.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(article.url))
+                val intent = Intent(Intent.ACTION_VIEW, article.url.toUri())
                 startActivity(intent)
             }
         }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun formatedDate(publishedAt: String): CharSequence? {
-        val zonedDateTime = ZonedDateTime.parse(publishedAt)
-        val localDateTime = zonedDateTime.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime()
-        val formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy")
-        return localDateTime.format(formatter)
     }
 }
